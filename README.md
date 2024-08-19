@@ -1,8 +1,8 @@
 # Vienna-Transit
 
-A web-based departure board that displays real-time transit information for any station in Vienna, using data from Wiener Linien.
+A web-based departure board displaying real-time transit information for any station in Vienna. The application retrieves a list of stations from the [Wiener Linien website](https://www.data.gv.at/katalog/dataset/wiener-linien-echtzeitdaten-via-datendrehscheibe-wien/resource/45f06281-5a9f-441c-9977-0fda610f963a#resources) and calculates the distance between the user’s location and each station using the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
-The application retrieves a comprehensive list of transit station from the [Wiener Linien website](https://www.data.gv.at/katalog/dataset/wiener-linien-echtzeitdaten-via-datendrehscheibe-wien/resource/45f06281-5a9f-441c-9977-0fda610f963a#resources) and uses the Haversine formula to calculate the distance between the user's current location and each station. After determining the nearest station, the application fetches real-time departure information from the [Wiener Linien API](https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-echtzeitdaten-dokumentation.pdf). This data is dynamically updated every 30 seconds.
+By default, it shows information for the nearest station, but users can select any station from a distance-sorted dropdown. Real-time departure data is fetched from the [Wiener Linien API](https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-echtzeitdaten-dokumentation.pdf) and updated every 30 seconds.
 
 ## Usage
 
@@ -22,3 +22,8 @@ Run Locally using the Netlify CLI:
 ```
 netlify dev
 ```
+
+## Notes
+
+- Due to CORS restrictions on the Wiener Linien API, the application uses Netlify's proxy functionality to make API calls.
+- The station list CSV is cached for 3 days to reduce unnecessary data transfer, while the real-time departure information API calls are always made instantly.
