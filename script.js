@@ -1,19 +1,20 @@
 const transportConfig = {
-    ptBusCity: { name: 'Bus', backgroundColor: '#13285A' },
-    ptBusNight: { name: 'Night Bus', backgroundColor: '#1A1460', textColor: '#FCF250' },
-    ptRufBus: { name: 'Rufbus', backgroundColor: '#1A1460', textColor: '#FCF250' },
-    ptTrainS: { name: 'S-Bahn', backgroundColor: '#4295D3' },
-    ptTram: { name: 'Tram', backgroundColor: '#CF2E26' },
-    ptTramWLB: { name: 'Badner Bahn', backgroundColor: '#245894' },
+    ptBusCity: { name: 'Bus', backgroundColor: '#13285A', darkBackgroundColor: '#1E3C8A' },
+    ptBusNight: { name: 'Night Bus', backgroundColor: '#1A1460', darkBackgroundColor: '#2A2170', textColor: '#FCF250' },
+    ptRufBus: { name: 'Rufbus', backgroundColor: '#1A1460', darkBackgroundColor: '#2A2170', textColor: '#FCF250' },
+    ptTrainS: { name: 'S-Bahn', backgroundColor: '#4295D3', darkBackgroundColor: '#52A5E3' },
+    ptTram: { name: 'Tram', backgroundColor: '#CF2E26', darkBackgroundColor: '#DF3E36' },
+    ptTramWLB: { name: 'Badner Bahn', backgroundColor: '#245894', darkBackgroundColor: '#3468A4' },
     ptMetro: { 
         name: 'Metro', 
         backgroundColor: '#CF2E26',
+        darkBackgroundColor: '#DF3E36',
         lineColors: {
-            U1: '#CF2E26',
-            U2: '#9E659F',
-            U3: '#DF8330',
-            U4: '#41934A',
-            U6: '#956B3A'
+            U1: { light: '#CF2E26', dark: '#DF3E36' },
+            U2: { light: '#9E659F', dark: '#AE75AF' },
+            U3: { light: '#DF8330', dark: '#EF9340' },
+            U4: { light: '#41934A', dark: '#51A35A' },
+            U6: { light: '#956B3A', dark: '#A57B4A' }
         }
     }
 }
@@ -42,6 +43,10 @@ stationModal.addEventListener('click', handleModalClick)
 stationSearch.addEventListener('input', handleStationSearch)
 clearSearchButton.addEventListener('click', clearSearchInput)
 stationList.addEventListener('click', handleStationSelection)
+
+function isDarkMode() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
 
 function startUpdateTimer() {
     if (updateTimer) {
@@ -93,8 +98,6 @@ function handleStationSelection(e) {
         stationDistanceElement.innerText = formatDistance(stationDistance)
 
         hideModal()
-
-        departuresGrid.innerHTML = '<div class="loading">Loading departures...</div>'
 
         if (updateInterval) {
             clearInterval(updateInterval)
@@ -250,10 +253,12 @@ function renderDepartures(data) {
 function createTransportTile(transport) {
     const transportInfo = transportConfig[transport.type]
     const textColor = transportInfo.textColor || '#FFFFFF'
-    let backgroundColor = transportInfo.backgroundColor
+    let backgroundColor = isDarkMode() ? transportInfo.darkBackgroundColor : transportInfo.backgroundColor
 
     if (transport.type === 'ptMetro' && transportInfo.lineColors[transport.line]) {
-        backgroundColor = transportInfo.lineColors[transport.line]
+        backgroundColor = isDarkMode() 
+            ? transportInfo.lineColors[transport.line].dark 
+            : transportInfo.lineColors[transport.line].light;
     }
 
     const tile = document.createElement('div')

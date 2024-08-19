@@ -12,7 +12,7 @@
         --primary-bg-color: #1c1c1e;
         --secondary-bg-color: #2c2c2e;
         --primary-text-color: #ffffff;
-        --secondary-text-color: #ebebf5;
+        --secondary-text-color: #c7c7ce;
         --border-color: #38383a;
         --shadow-color: rgba(255, 255, 255, 0.1);
     }
@@ -154,8 +154,13 @@ body {
     padding: 8px 30px 8px 8px;
     font-size: 16px;
     box-sizing: border-box;
-    
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
 }
+
+
 
 .clear-search {
     position: absolute;
