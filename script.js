@@ -99,6 +99,8 @@ function handleStationSelection(e) {
 
         hideModal()
 
+        departuresGrid.innerHTML = ''
+
         if (updateInterval) {
             clearInterval(updateInterval)
         }
