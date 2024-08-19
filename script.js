@@ -308,7 +308,7 @@ function updateLastUpdatedText() {
 function renderStationList(stations) {
     stationList.innerHTML = stations.map(station => `
         <div class="station-item" data-station-diva='${station.diva}' data-station-distance='${station.distance}'>
-            <span>${station.name}</span>
+            <span class="modal-station">${station.name}</span>
             <span class="station-distance">${formatDistance(station.distance)}</span>
         </div>`
     ).join('')

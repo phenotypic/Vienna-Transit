@@ -7,6 +7,17 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-bg-color: #1c1c1e;
+        --secondary-bg-color: #2c2c2e;
+        --primary-text-color: #ffffff;
+        --secondary-text-color: #ebebf5;
+        --border-color: #38383a;
+        --shadow-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
 body {
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
@@ -76,7 +87,6 @@ body {
 .transport-number {
     font-size: 20px;
     font-weight: bold;
-    color: white;
     border-radius: 4px;
     padding: 2px 8px;
 }
@@ -106,8 +116,8 @@ body {
     font-size: 14px;
 }
 
-.time {
-    font-weight: bold;
+.time, .modal-station {
+    color: var(--primary-text-color);
 }
 
 .modal {
@@ -144,6 +154,7 @@ body {
     padding: 8px 30px 8px 8px;
     font-size: 16px;
     box-sizing: border-box;
+    
 }
 
 .clear-search {
