@@ -1,0 +1,5 @@
+# Proxy for the CSV file
+/api/csv https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-haltepunkte.csv 200
+
+# Proxy for the monitor data
+/api/monitor https://www.wienerlinien.at/ogd_realtime/monitor 200

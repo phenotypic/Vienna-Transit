@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Departure Board</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="station-selector">
+        <div class="station-info">
+            <div class="station-name-container">
+                <span id="station-name" class="station-name">Finding stations...</span>
+            </div>
+            <span id="station-distance" class="station-distance">Finding distance...</span>
+        </div>
+    </div>
+    
+    <div id="departures-grid" class="grid">
+        <!-- Transport tiles are dynamically added here -->
+    </div>
+
+    <!-- Modal for station selection -->
+    <div id="station-modal" class="modal">
+        <div class="modal-content">
+            <div class="search-container">
+                <input type="text" id="station-search" placeholder="Search for a station..." class="station-search">
+                <span id="clear-search" class="clear-search">×</span>
+            </div>
+            <div id="station-list" class="station-list">
+                <!-- Station options are dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="last-update" class="last-update"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Cache the CSV file for 3 days (259200 seconds)
+/api/csv
+  Cache-Control: public, max-age=259200
+
+# Do not cache the API response
+/api/monitor
+  Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate
