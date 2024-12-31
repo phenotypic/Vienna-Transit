@@ -14,6 +14,7 @@ const transportConfig = {
             U2: { light: '#9E659F', dark: '#AE75AF' },
             U3: { light: '#DF8330', dark: '#EF9340' },
             U4: { light: '#41934A', dark: '#51A35A' },
+            U5: { light: '#3E8C93', dark: '#4E9CA3' },
             U6: { light: '#956B3A', dark: '#A57B4A' }
         }
     }
