@@ -327,8 +327,13 @@ function formatDistance(distance) {
 }
 
 function formatTime(timeString) {
+    const viennaTimeZone = 'Europe/Vienna'
     const parsedTime = new Date(timeString)
-    return parsedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    return parsedTime.toLocaleTimeString('de-AT', {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: viennaTimeZone
+    })
 }
 
 function formatPlural(count, baseString) {
