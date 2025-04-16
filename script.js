@@ -74,7 +74,7 @@ function handleModalClick(e) {
 }
 
 function handleStationSearch() {
-    const query = stationSearch.value.toLowerCase()
+    const query = stationSearch.value.trim().toLowerCase()
     const filteredStations = stationsList.filter(station =>
         station.name.toLowerCase().includes(query)
     )
